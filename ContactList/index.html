@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contact List</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<body>
+	<main>
+		<section class="displayBox">
+			<h1 class="errMsg">No records found</h1>
+			<div class="details">
+				<div class="seachBox">
+					<span>
+						<input type="text" placeholder="Enter something to search" class="searchInput"  oninput="checkEmpty(this)" />
+						<b onclick="clearInput()">X</b>
+					</span>	
+					<select class="dropDown" onchange="dropDownVal(this)">
+						<option  value="">Category</option>
+						<option value="Name">Name</option>
+						<option value="Email">Email</option>
+						<option value="MobileNumber">Mobile Number</option>
+						<option value="Description">Description</option>
+						<option value="DateOfBirth">Date of Birth</option>
+						<option value="Gender">Gender</option>
+						<option value="Age">Age</option>
+						<option value="Weight">Weight</option>
+						<option value="Height">Height</option>
+						<option value="BMI">BMI</option>
+						<option value="Hobbies">Hobbies</option>
+					</select>
+					<button onclick="searchNote()">Search</button>
+				</div>	
+				<h1 class="ErrorMsg">Sorry, No record found</h1>
+				<div class="userDetails">
+				</div>
+			</div>
+			<button type="button" class="createNewRecord" title="Create New" onclick="createNewNote()">+</button>
+ 		</section>
+
+		<section class="popupBox" >
+			<div class="newRecord">
+				<div class="heading">
+					<h1>New Record</h1><b class="closeIcon" title="Close" onclick="closeWithoutSave(); closePopUP()">X</b>
+				</div>
+				<form id="forms" class="forms" onsubmit="getFormValues(event)">
+					<div>
+						<input type="text" class="name" placeholder="Enter your Name" />
+						<label>Please Enter your name</label>
+					</div>
+					<div>	
+						<input type="text" class="email" placeholder="Enter your Email" />
+						<label>Please Enter your Email Id</label>
+					</div>	
+					<div>
+						<input type="tel" class="tel" placeholder="Enter your Mobile Number" />
+						<label>Please Enter your Mobile Number</label>
+					</div>	
+					<div>	
+						<textarea class="info" class="desc" placeholder="Enter somethin' about you"></textarea>
+						<label>Enter somethin' about you</label>
+					</div>
+
+					<div>
+						<input type="date" class="dob" >
+						<label>Please select your DOB</label>
+					</div>	
+
+					<div class="userImageDiv">
+						<label class="displayLabel">Please provide your image</label>
+						<input type="file" class="dp" onchange="getUserImage(event)" />
+					</div>	
+
+					<div>
+						<label class="displayLabel">Please select your Height (In CM)</label>
+						<section>
+							<input type="range" class="heightRange" value="100" min="10" max="300" oninput="heightRange(this)" />
+							<label class="heightValue dontLabel"><b>100 cm</b></label>
+						</section>	
+					</div>	
+					<div>
+						<label class="displayLabel">Please select your Weight (In KG)</label>
+						<section>
+							<input type="range" class="weightRange" value="50" min="1" max="150"  oninput="weightRange(this)" />
+							<label class="weightValue dontLabel"><b>50 kg</b></label>
+						</section>	
+					</div>	
+					<div>
+						<label class="displayLabel">Please select your Gender</label>
+						<div class="genderDiv">
+							<section>
+								<input type="radio" class="gender"  name="gender" id="male" value="Male" >
+								<label class="dontLabel" for="male">male</label>
+							</section>	
+							<section>
+								<input type="radio" class="gender" id="female" name="gender" value="Female" >
+								<label class="dontLabel" for="female">Female</label>
+							</section>
+						</div>	
+					</div>	
+					<div>
+						<label class="displayLabel">Please select your hobbies</label>
+						<div class="genderDiv">
+							<section>
+								<input type="checkbox" name="hobbies" class="hobbies"  id="reading" value="Reading">
+								<label class="dontLabel" for="reading">Reading</label>
+							</section>	
+							<section>
+								<input type="checkbox" name="hobbies" class="hobbies" id="writing" value="Writing">
+								<label class="dontLabel" for="writing">Writing</label>
+							</section>
+							<section>
+								<input type="checkbox" name="hobbies" class="hobbies" id="Swimming" value="Swimming">
+								<label class="dontLabel" for="Swimming">Swimming</label>
+							</section>
+						</div>	
+					</div>	
+            		<div class="buttons">
+	            		<input type = "reset" value = "Reset" />
+	            		<input type = "submit" value = "Submit" />
+	            	</div>	
+				</form>
+			</div>	
+		</section>
+
+		<ol class="throwError">
+			<b class="closeError" onclick="closeErrorPopUp()">X</b>
+			<ul class="errorList"></ul>
+			
+		</ol>	
+
+		<aside onclick="closeImagePopUp(event)">
+			<b>X</b>
+			<div class="img" onclick="zoomImage(event)" onmouseover="showZoomOpt()" onmouseleave="hideZoomOpt()">
+				<section class="zoomINbtn">
+					<span onclick="incrementDecrement('-',event)" title="Zoom-Out">-</span>
+					<span onclick="incrementDecrement('resize',event)" title="Resize"><i class="fa-solid fa-magnifying-glass"></i></span>
+					<span onclick="incrementDecrement('+',event)" title="Zoom-In">+</span>
+				</section>
+			</div>	
+
+			<div class="imageUrl" onclick="copyImageUrl(event)" onmouseover="resetMsg()">
+				<p></p>
+				<div class="icon">
+					<i class="fa-solid fa-copy copyIcon" ></i>
+					<span class="copiedImg">Copy URL</span>
+				</div>	
+			</div>		
+
+		</aside>
+		<div class="popUP"></div>
+	</main>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

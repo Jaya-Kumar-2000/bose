@@ -1,0 +1,938 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto Slab', serif;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+	user-select: none;
+}
+main{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #eee;
+}
+main > .displayBox{
+	max-height: 600px;
+	width:55%;
+	min-width: 270px;
+	overflow: auto;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	position: relative;
+	box-shadow: 0 0 50px rgba(0, 0, 0, .1);
+	margin: 0 20px;
+}
+.displayBox > .errMsg{
+	text-transform: uppercase;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2rem;
+}
+.displayBox .createNewRecord{
+	height: 50px;
+	width: 50px;
+	border: none;
+	border-radius: 50%;
+	font-size: 2rem;
+	font-weight: bold;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	cursor: pointer;
+	background: #ccc;
+}
+.details{
+	width: 100%;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	background: #eee;
+	box-shadow: 0 0 30px rgba(0, 0, 0, .3);
+	overflow: auto;
+	position:relative;
+}
+.details .seachBox{
+	height: auto;
+	padding: 10px 0;
+	position: sticky;
+	z-index: 1;
+ 	top: 0;
+ 	width: 100%;
+ 	text-align: center;
+ 	background: rgba(0, 0, 0, .3);
+ 	backdrop-filter: blur(5px);
+}
+.seachBox > span{
+	position: relative;
+	overflow: hidden;
+} 
+.seachBox > span b{
+	position: absolute;
+	top: -6px;
+	right: 5px;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	font-size: .8rem;
+	background: #ddd;
+	transition: .2s;
+}
+.seachBox > span b:hover{
+	background: #eee;
+}	
+.seachBox > span b.closeX{
+	display: flex;
+}
+.details .seachBox .searchInput{
+ 	width: 30%;
+ 	height: 30px;
+ 	min-width: 140px;
+ 	padding-left: 5px;
+ 	border: none;
+ 	outline: none;
+ 	border-radius: 3px;
+ 	font-size: 1rem;
+}
+
+.details .seachBox select{
+	height: 30px;
+	border: none;
+	outline: none;
+	border-radius: 3px;
+}
+
+.details .seachBox button{
+	height: 30px;
+	border: none;
+	outline: none;
+ 	border-radius: 3px;
+ 	padding: 0 5px;
+ 	margin-left: 3px;
+ 	cursor: pointer;
+}
+h1.ErrorMsg{
+	font-size: 2rem;
+	display: none;
+	height: 50px;
+	padding: 15px 0;
+}
+.userDetails{
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px;
+	column-gap: 1.2rem;
+    row-gap: 1.2rem;
+}
+.displayBox .eachContainer{
+	border-radius: 10px;
+	max-height: 370px;
+	width: 300px;
+	padding: 5px;
+	overflow: auto;
+	background: #f7f7f7;
+	position: relative;
+} 
+
+.eachContainer::-webkit-scrollbar {
+  width: 3px;
+}
+.eachContainer::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 10px;
+}
+.eachContainer::-webkit-scrollbar-track {
+  background: #ddd;
+}
+.Imagecontainer{
+	display: flex;
+	justify-content: center;
+	position: relative;
+	padding: 5px;
+}
+figure{
+	border-radius: 50%;
+	width: 120px;
+	height: 120px;
+	background-size:cover ;
+	background-position: center;
+	background-repeat:no-repeat ;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+	cursor: pointer;
+	transition: .2s;
+}
+figure:hover{
+	transform: scale(1.05);
+}	
+.displayImagePopUp{
+	height: 230px;
+	width: 200px;
+	position: absolute;
+	top: 100%;
+	z-index: 100;
+	border-radius: 5px;
+	padding: 5px;
+	background: rgba(0, 0, 0, .5);
+	backdrop-filter: blur(5px);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.loader {
+  margin: auto;
+  border: 5px solid #EAF0F6;
+  border-radius: 50%;
+  border-top: 5px solid #7fc3fe;
+  width: 50px;
+  height: 50px;
+  animation: spinner 1.5s linear infinite;
+}
+@keyframes spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.deleteEditImg{
+	position: absolute;
+	top: 3px;
+	right: 5px;
+}
+.deleteEditImg  img{
+	width: 20px;
+	transition: .1s;
+	position: relative;
+	cursor: pointer;
+}	
+.deleteEditImg  img:nth-child(1) {
+	margin-right: 10px;
+}	
+.deleteEditImg img:hover{
+	transform: scale(1.1) rotate(5deg);
+}	
+.eachContainer  h1{
+	padding: 5px;
+	font-size: 1rem;
+}
+.eachContainer ul{
+	padding: 5px;
+	font-size: 1rem;
+}
+.eachContainer ul li{	
+	margin: 3px 30px;
+	list-style-type: "✔";
+	text-indent: 3px;
+}	
+.eachContainer ul li::marker{
+	font-size: 1.2rem;
+	color: green;
+}	
+
+.displayBox .eachContainer span{
+	font-weight: normal;
+	font-size: .9rem;
+	padding-left:5px;
+}
+.displayBox .eachContainer .lastEdit{
+	font-size: 10px;
+	display: block;
+	text-align: right;
+}
+
+.popupBox{
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 2	;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background: #eee;
+}
+.popupBox .newRecord{
+	height: auto;
+	width: 450px;
+	padding: 5px;
+	background: #f7f7f7;
+	border-radius: 5px;
+	box-shadow: 0 0 50px rgba(0, 0, 0, .1);
+	overflow: auto;
+}
+.newRecord .heading{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	height: 8%;
+	margin: 10px 0;	
+}
+.newRecord .heading h1{
+	font-size: 2rem;
+}	
+.newRecord .heading b{
+	position: absolute;
+	right: 10px;
+	font-size: 1.5rem;
+	cursor: pointer;
+	opacity: .5;
+	transition: .2s;
+}	
+.newRecord .heading b:hover{
+	opacity: 1;
+}	
+.newRecord form{
+	height: calc(100% - 8%);
+	overflow: auto;
+	width: 100%;
+	padding: 5px 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.newRecord form div{
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+}
+.newRecord form div.genderDiv{
+	flex-direction: row;
+	width: 100%;
+}
+.newRecord form div section{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
+.newRecord form .genderDiv section input{
+	height: 20px;
+	width: 15px;
+}
+.newRecord form div > label{
+	display: none;
+	font-size: .9rem;
+}
+.newRecord form div > .displayLabel{
+	display: block;
+}
+label:after{
+	content: " *";
+	color: #ff230c;
+	font-size: 1.2rem;
+}
+.dontLabel:after{
+	content: "";
+}
+.newRecord form input,textarea{
+	height: 35px;
+	width: 100%;
+	padding-left: 5px;
+	margin: 5px 0 ;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	font-size: 1rem;
+	background: #eee;
+}
+.newRecord form div section input{
+	width: 100%;
+}	
+.newRecord form div section label{
+	margin-left: 5px;
+	font-size:.9rem;
+	width: 70px;
+}	
+.newRecord textarea{
+	resize: none;
+	height: 100px;
+	padding-left: 0;
+	padding: 5px;
+}	
+.newRecord form input:hover,button:hover,.newRecord textarea:hover,{
+	background: #ddd;
+}
+.newRecord form input:focus + label,.newRecord textarea:focus +label {
+	display: block;
+}	
+.newRecord form .buttons{
+	flex-direction: row;
+	justify-content: center;
+}
+.newRecord form .buttons input{
+	width: 100px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+.saveBtn{
+	display: none;
+}
+.throwError{
+	background: rgba(0, 0, 0, .1);
+	height: auto;
+	width: 50%;
+	position: fixed;
+	z-index: 3;
+	top: -50%;
+	transition: .4s;
+	color: rgb(0, 0, 0);
+	backdrop-filter: blur(5px);
+}
+.throwError li{
+	list-style: disc;
+	margin: 10px 30px;
+}
+.throwError li::marker{
+   color: red;
+}
+.addCss{
+	top: 10px;
+}
+.throwError .closeError{
+	float: right;
+	font-size: 1.2rem;
+	cursor: pointer;
+	background: #ddd;
+	height: 28px;
+	width: 28px; 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: .2s;
+}
+.throwError .closeError:hover{
+	background: #eee;
+	opacity: .5;
+}	
+
+aside{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	z-index: 5;
+	background: rgba(0, 0, 0, .3);
+	display: none;
+	justify-content: center;
+	align-items: center;
+    flex-direction: column;
+	backdrop-filter: blur(5px);
+}
+aside b{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: 1.2rem;
+	height: 30px;
+	width: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border-radius: 50%;
+	box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+	background: rgba(255, 255, 255, .7);
+}
+aside .img{
+	width: 430px;
+ 	height: 520px;
+	border-radius: 10px;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: crosshair;
+	position: relative;
+}	
+aside .zoomINbtn{
+	position: absolute;
+    z-index: 15;
+    margin: auto;
+    color: #fff;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    height: 40px;
+    max-width: 120px;
+    opacity: 0;
+    display: flex;
+    background-color: #000;
+    border-radius: 5px;
+    transition: .5s;
+}
+.zoomINbtn span{
+	border: 1px solid black;
+	width: calc(100% / 3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	font-size: 2.3rem;
+	font-weight: bold;
+	cursor: pointer;
+	color: white;
+	transition: .1s;
+}
+.zoomINbtn span:active{
+	color: gray;
+}	
+.zoomINbtn span i{
+	font-size: 1.2rem;
+}	
+.zoomINbtn span:nth-child(1){
+	border-right: none;
+}
+aside .imageUrl{
+	background: #ddd;
+	height: 30px;
+	width: 40%;
+	margin: 20px 0;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.imageUrl p{
+	white-space: nowrap;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	padding-left: 5px;
+	overflow: hidden;
+}
+.imageUrl .icon{
+	position: absolute;
+	right: 0;
+	font-size: 1.2rem;
+	cursor: pointer;
+	background: rgba(0, 0, 0, 1);
+	color: white;
+	height: 100%;
+	width: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: .2s;
+}
+.imageUrl .icon i{
+	position: absolute;
+}
+.imageUrl .icon span{
+	position: absolute;
+	width: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	bottom: -30px;
+	opacity: 0;
+	background:black;
+	padding: 3px 5px;
+	font-size: .8em;
+	color: white;
+	border-radius: 5px;
+	white-space: nowrap;
+	font-weight: bold;
+	transition: .2s;
+	transition-timing-function: ease-out;
+}
+.imageUrl .icon i:hover + span {
+	opacity: 1;
+}	
+
+@media(min-width: 1024px){
+	.details .seachBox .searchInput,.details .seachBox select,.details .seachBox button{
+		font-size: 1rem;
+		height: 35px;
+		padding-left: 5px;
+	}
+	.details .seachBox .searchInput{
+		width: 300px;
+	}
+	.details .seachBox select{
+		width: 150px;
+	}
+	.details .seachBox button{
+		width: 80px;
+	}
+}
+@media (min-width: 786px) and (max-width: 1024px){
+	main >.displayBox{
+		width: 90%;
+	}
+	.details .seachBox .searchInput,.details .seachBox select,.details .seachBox button{
+		font-size: 1rem;
+		height: 35px;
+		padding-left: 5px;
+	}
+	.details .seachBox .searchInput{
+		width: 230px;
+	}loadEachPerson
+	.details .seachBox select{
+		width: 110px;
+	}
+	.details .seachBox button{
+		width: 70px;
+	}
+	.throwError{
+		width: 65%;
+	}
+	.throwError li{
+		font-size: 1rem;
+	}
+	aside .img{
+		width: 400px;
+		height: 460px;
+	}
+}
+@media (max-width: 786px) {
+	main > .displayBox{
+		width: 75%;
+	}
+	.details .seachBox .searchInput,.details .seachBox select,.details .seachBox button{
+		font-size: .9rem;
+		height: 33px;
+		padding-left: 5px;
+	}
+	.seachBox > span b{
+		top: -5px;
+	}
+	.details .seachBox .searchInput{
+		width: 240px;
+	}
+	.details .seachBox select{
+		width: 90px;
+	}
+	.details .seachBox button{
+		width: 80px;
+	}
+	.throwError{
+		width: 70%;
+	}
+	.throwError li{
+		font-size: 1rem;
+	}
+
+	aside .img{
+		width: 380px;
+		height: 430px;
+	}
+
+}
+@media (max-width: 650px) {
+	main > .displayBox{
+		width: 90%;
+	}
+
+	.details .seachBox .searchInput,.details .seachBox select,.details .seachBox button{
+		font-size: .9rem;
+		height: 30px;
+		padding-left: 3px;
+	}
+	.details .seachBox .searchInput{
+		width: 230px;
+	}
+	.seachBox > span b{
+		top: -1px;
+	}
+	.details .seachBox select{
+		width: 80px;
+	}
+	.details .seachBox button{
+		width: 60px;
+	}
+	.displayBox .createNewRecord{
+		width: 45px;
+		height: 45px;
+		font-size: 1.7rem;
+	}
+	h1.ErrorMsg{
+		font-size: 1.6rem;
+		height: 45px;
+	}
+	.throwError{
+		width: 85%;
+	}
+	.throwError li{
+		font-size: .9rem;
+	}
+	aside .img{
+		width: 350px;
+		height: 400px;
+	}
+}	
+@media (max-width: 460px) {
+	.displayBox > .errMsg{
+		font-size: 1.6rem;
+	}
+	.displayBox .eachContainer{
+		width: 270px;
+	}
+	.details .seachBox .searchInput,.details .seachBox select,.details .seachBox button{
+		font-size: .7rem;
+		height: 25px;
+		padding-left: 3px;
+	}
+	.details .seachBox .searchInput{
+		width: 180px;
+	}
+	.seachBox > span b{
+		top: 0;
+	}
+	.details .seachBox select{
+		width: 80px;
+	}
+	.details .seachBox button{
+		width: 50px;
+	}
+	.popupBox .newRecord{
+		margin: 0 5px;
+		width: 80%;
+		min-width: 350px;
+	}
+	.newRecord form div{
+		width: 90%;
+	}
+	.newRecord .heading h1,.newRecord .heading b{
+		font-size: 1rem;
+	}
+	.newRecord form input, textarea{
+		height: 30px;
+		font-size: .9rem;
+	}
+	.newRecord form div > label{
+		font-size: .7rem;
+	}
+	.newRecord form div section label,.newRecord form div section label{
+		font-size: .9rem;
+	}
+	.newRecord form .buttons input{
+		font-size: .8rem;
+		width: 70px;
+		height: 30px;
+	}	
+	.displayBox .createNewRecord{
+		width: 40px;
+		height: 40px;
+		font-size: 1.6rem;
+	}
+	h1.ErrorMsg{
+		font-size: 1.4rem;
+		height: 40px;
+	}
+	.throwError{
+		width: 85%;
+	}
+	.throwError li{
+		font-size: .8rem;
+	}
+	.displayBox .eachContainer button{
+		font-size: .7rem;
+		width: 50px;
+	}
+	figure{
+		width: 110px;
+		height: 110px;
+	}
+	aside .img{
+		width: 260px;
+		height: 290px;
+	}
+
+}	
+@media (max-width: 360px) {
+	.displayBox > .errMsg{
+		font-size: 1.3rem;
+	}
+	.displayBox .eachContainer{
+		width: 240px;
+	}
+	.details .seachBox .searchInput,.details .seachBox select,.details .seachBox button{
+		font-size: .6rem;
+		height: 23px;
+		padding-left: 3px;
+	}
+	.details .seachBox .searchInput{
+		width: 100px;
+	}
+	.seachBox > span b{
+		height: 18px;
+		width: 18px;
+		font-size: .6rem;
+		top: 2px;
+	}
+	.details .seachBox select{
+		width: 70px;
+	}
+	.details .seachBox button{
+		width: 40px;
+	}	
+	.popupBox .newRecord{
+		margin: 0 5px;
+		width: 95%;
+		min-width: 270px;
+	}
+	.newRecord form div{
+		width: 90%;
+	}
+	.newRecord .heading h1,.newRecord .heading b{
+		font-size: 1rem;
+	}
+	.newRecord form input, textarea{
+		height: 30px;
+		font-size: .9rem;
+	}
+	.newRecord form div > label{
+		font-size: .7rem;
+	}
+	.newRecord form div section label,.newRecord form div section label{
+		font-size: .8rem;
+	}
+	.newRecord form .buttons input{
+		font-size: .8rem;
+		width: 70px;
+		height: 30px;
+	}	
+	.displayBox .createNewRecord{
+		width: 35px;
+		height: 35px;
+		font-size: 1.4rem;
+	}
+	h1.ErrorMsg{
+		font-size: 1.1rem;
+		height: 30px;
+	}
+	.throwError{
+		width: 90%;
+	}
+	.throwError li{
+		font-size: .7rem;
+	}
+	.displayBox .eachContainer button{
+		font-size: .6rem;
+		width: 40px;
+	}
+	.displayBox .eachContainer .lastEdit{
+		font-size: 9px;
+	}
+	figure{
+		width: 100px;
+		height: 100px;
+	}
+	aside .img{
+		width: 250px;
+		height: 280px;
+	}
+	aside b{
+		top: 5px;
+		right: 5px;
+	}
+	.displayImagePopUp{
+		width: 170px;
+		height: 200px;
+	}
+}
+@media(max-width: 280px){
+	.displayBox > .errMsg{
+		font-size: 1.1rem;
+	}
+	.details .seachBox .searchInput,.details .seachBox select,.details .seachBox button{
+		font-size: .5rem;
+		height: 20px;
+		padding-left: 2px;
+	}
+	.details .seachBox .searchInput	{
+		width: 85px;
+	}
+	.details .seachBox select{
+		width: 60px;
+	}
+	.details .seachBox button{
+		width: 40px;
+	}	
+	.seachBox > span b{
+		height: 15px;
+		width: 15px;
+		font-size: .6rem;
+		top: 4px;
+	}
+	.displayBox .eachContainer{
+		width: 240px;
+	}
+	.eachContainer h1{
+		font-size: .9rem;
+	}
+	.displayBox .eachContainer span{
+		font-size: .8rem;
+	}
+	.popupBox .newRecord{
+		margin: 0 5px;
+		width: 90%;
+		min-width: 270px;
+	}
+	.newRecord form div{
+		width: 95%;
+	}
+	.newRecord .heading h1,.newRecord .heading b{
+		font-size: 1rem;
+	}
+	.newRecord form input, textarea{
+		height: 25px;
+		font-size: .8rem;
+	}
+	.newRecord form div > label{
+		font-size: .6rem;
+	}
+	.newRecord form div section label{
+		font-size: .8rem;
+	}
+	.newRecord form div section label{
+		font-size: .7rem;
+	}
+	.newRecord form .buttons input{
+		font-size: .7rem;
+		width: 70px;
+		height: 25px;
+	}
+	.displayBox .createNewRecord{
+		width: 30px;
+		height: 30px;
+		font-size: 1.2rem;
+	}
+	h1.ErrorMsg{
+		font-size: 1rem;
+		height: 25px;
+	}
+	.throwError{
+		width: 90%;
+	}
+	.throwError li{
+		font-size: .6rem;
+	}
+	figure{
+		width: 80px;
+		height: 80px;
+	}
+	.displayImagePopUp{
+		width: 150px;
+		height: 180px;
+	}
+}
