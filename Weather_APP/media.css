@@ -1,0 +1,375 @@
+@media(min-width: 960px){	
+	.errorMsg{
+		width: 30%;
+		min-width: 450px;
+	}
+}	
+
+
+@media(max-width: 960px){
+	.parent{
+		width: 95%;
+		min-width: 600px;
+	}
+	.container-1{
+		min-width: 300px;
+		padding: 0 10px 20px;
+	}
+	.container-1 .searchBox,.today_info,.Weather_info{
+		width: 90%;
+	}
+	.cloud_image{
+		height: 230px;
+		width: 230px;
+	}
+	.city_img{
+		height: 90px;
+		width: 200px;
+		margin: 15px auto 0;
+	}	
+	.city_img span{
+		font-size: 1.1rem;
+		letter-spacing: 0;
+	}
+	.errorMsg{
+		width: 70%;
+		max-width: 450px;
+	}	
+}
+
+
+@media(max-width: 768px) {
+
+	.parent{
+		width: 90%;
+		min-width: 580px;
+		flex-wrap: wrap;
+	}
+	.loading{
+		position: fixed;
+		border-radius: 0;
+	}
+	.container-1{
+		width: 100%;
+		border-radius: 3rem 3rem 0 0;
+		padding-top: 80px;
+
+	}
+	.container-1 .searchBox{
+		min-height: 40px;
+		padding-bottom: 0;
+	}
+	.container-1 .searchBox,.today_info,.Weather_info{
+		width: 40%;
+		min-width: 320px;
+	}	
+	.container-2{
+		width: 100%;
+		border-radius: 0 0 3rem 3rem;
+		padding: 15px 30px;
+		background: #FFFFFF;
+	}	
+	.city_img{
+		width: 240px;
+	}	
+	.city_img span{
+		font-size: 1.3rem;
+	}
+	.profile_card{
+		position: absolute;
+		height: 65px;
+		top: 0;
+		left: 0;
+		right: 0;
+		border-radius: 3rem 3rem 0 0;
+		background: #FFFFFF;
+		padding: 0 35px 8px;
+	}
+
+
+	.profile_Image{
+		width: 165px;
+	}
+
+	.errorMsg{
+		width: 70%;
+		font-size: 1.5rem;
+	}
+	.buttonBox{
+		top: 5px;
+		right: 5px;
+		font-size: 13px;
+	}
+
+}
+
+@media(max-width: 600px){
+	.parent{
+		min-width: 430px;
+		flex-wrap: wrap;
+	}
+	.container-1{
+		border-radius: 2rem 2rem 0 0;
+	}
+	.container-2{
+		border-radius: 0 0 2rem 2rem;
+		padding: 15px;
+
+	}
+	.today_info,.Weather_info{
+		min-width: 320px
+	}
+
+	.today_info p{
+		font-size: 3.7rem;
+	}
+	.today_info h1{
+		font-size: 1.7rem;
+	}
+	.profile_card{
+		padding: 0 15px 8px;
+	}
+	.popup_DP .image{
+		height: 370px;
+		width: 370px;
+	}
+
+	.errorMsg{
+		font-size: 1.3rem;
+	}
+	.buttonBox{
+		font-size: 13px;
+	}
+}
+
+
+@media(max-width: 480px){
+	.parent{
+		min-width: 350px;
+	}
+	.container-1{
+		border-radius: 1.6rem 1.6rem 0 0;
+		padding-top: 75px;
+	}
+	.container-2{
+		border-radius: 0 0 1.6rem 1.6rem;
+		padding: 10px;
+	}
+	.container-1 .searchBox{
+		min-width: 280px;
+		min-height: 45px;
+	}
+	.today_info,.Weather_info{
+		min-width: 280px
+	}
+
+	.today_info p{
+		font-size: 3.5rem;
+	}
+	.today_info h1{
+		font-size: 1.5rem;
+	}
+	.city_img{
+		width: 	200px;
+		height: 90px;
+		margin: 10px auto 0;
+	}	
+	.city_img span{
+		font-size: 1.2rem;
+	}
+
+	.profile_Image{
+		width: 160px;
+	}
+	.popup_DP .image{
+		height: 280px;
+		width: 280px;
+	}
+	.warningMsg div{
+		width: 80%;
+		min-width: 330px;
+	}
+	.errorMsg{
+		width: 80%;
+		font-size: 1.1rem;
+	}
+	.typeMsg{
+		padding: 8px 13px;
+		font-size: .8rem;
+	}
+	.buttonBox{
+		font-size: 10px;
+		top: 3px;
+		right: 3px;
+	}
+}
+
+@media(max-width: 360px){
+	.parent{
+		min-width: 270px;
+	}
+	.container-1{
+		min-width: 270px;
+		border-radius: 1.3rem 1.3rem 0 0;
+	}
+	.container-2{
+		border-radius: 0 0 1.3rem 1.3rem;
+		padding: 7px;
+	}
+	.container-1 .searchBox{
+		min-width: 250px;
+		min-height: 30px;
+	}	
+	.today_info,.Weather_info{
+		min-width: 250px
+	}
+	.today_info p{
+		font-size: 3.2rem;
+	}
+	.today_info h1{
+		font-size: 1.4rem;
+	}
+	.city_img span{
+		font-size: 1rem;
+	}
+	.profile_card{
+		height: 55px;
+		padding: 0 7px 7px;
+	}
+	.profile_card nav{
+		width: 85px;
+	}
+	.profile_card nav a{
+		font-size: 13px;
+	}
+	.profile_Image{
+		width: 125px;
+	}
+	.profile_Image .degree{
+		width: 80px;
+	}
+	.profile_Image span, .toggle{
+		height: 23px;
+		width: 23px;
+		font-size: 11px;
+	}
+	.profile_Image .display_image{
+		height: 38px;
+		width: 38px;
+	}
+	.popup_DP .image{
+		height: 250px;
+		width: 250px;
+	}
+	.warningMsg div{
+		width: 85%;
+		height: 370px;
+		min-width: 270px;
+	}
+	.warningMsg h5{
+		font-size: 1.4rem;
+	}
+	.warningMsg p{
+		font-size: .8rem;
+	}
+	.errorMsg{
+		width: 85%;
+		font-size: 1rem;
+	}
+	.networkPopup h1{
+		margin: 15px 0;
+		font-size: 2.2rem;
+	}
+	.networkPopup p{
+		font-size: 1.1rem;
+	}
+	.networkPopup button{
+		margin: 30px;
+	}
+	.typeMsg{
+		padding: 5px 7px;
+		font-size: .7rem;
+	}
+	.buttonBox{
+		font-size: 8px;
+	}
+}
+
+
+@media(max-width: 280px){
+	.parent{
+		min-width: 260px;
+	}
+	.container-1{
+		min-width: 270px;
+	}
+	.container-2{
+		padding: 5px;
+	}
+	.profile_card nav{
+		width: 75px;
+	}
+	.profile_card nav a{
+		font-size: 11px;
+	}
+	.profile_Image{
+		width: 120px;
+	}
+	.profile_Image span,.toggle{
+		height: 22px;
+		width: 22px;
+	}
+	.profile_Image .display_image{
+		height: 35px;
+		width: 35px;
+	}
+	.popUpSmall{
+		height: 160px;
+		width: 130px;
+	}
+	.popup_DP .image{
+		height: 210px;
+		width: 210px;
+	}
+	.warningMsg div{
+		width: 90%;
+		height: 340px;
+		min-width: 250px;
+		padding: 0 8px;
+	}
+	.warningMsg .markerGif{
+		height: 160px;
+		width: 160px;
+	}
+	.warningMsg p{
+		font-size: 12px;
+	}
+
+	.errorMsg{
+		font-size: .9rem;
+	}
+	.networkPopup figure{
+		width: 140px;
+		height: 80px;
+	}
+	.networkPopup h1{
+		margin: 15px 0;
+		font-size: 2rem;
+	}
+	.networkPopup p{
+		font-size: 1rem;
+	}
+	.networkPopup button{
+		margin: 20px;
+	}
+	.typeMsg{
+		padding: 5px;
+		font-size: .6rem;
+	}
+	.buttonBox{
+		top: 2px;
+		right: 2px;
+	}
+
+}
+
